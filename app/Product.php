@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Utils\CanBeRated;
 
 class Product extends Model
 {
     //
+    use CanBeRated;
+
     protected $guarded = [];
 
     public function category()
