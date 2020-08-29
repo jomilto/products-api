@@ -25,7 +25,7 @@ class CategoryControllerTest extends TestCase
 
         $response = $this->getJson('/api/categories');
 
-        $response->dump();
+        // $response->dump();
 
         $response->assertSuccessful();
         $response->assertHeader('content-type', 'application/json');
