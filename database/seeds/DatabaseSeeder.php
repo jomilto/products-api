@@ -13,16 +13,17 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
 
-        App\User::create([
-            'name' => 'Admin',
-            'email' => 'admin@email.com',
-            'password' => bcrypt('admin')
-        ]);
+        // App\User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@email.com',
+        //     'password' => bcrypt('admin')
+        // ]);
 
         // App\Category::create([
         //     'name' => 'Otros'
         // ]);
 
+        factory(\App\User::class,10)->create();
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }

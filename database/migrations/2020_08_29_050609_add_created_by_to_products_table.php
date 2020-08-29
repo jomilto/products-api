@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryIdToProductsTable extends Migration
+class AddCreatedByToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class AddCategoryIdToProductsTable extends Migration
      */
     public function up()
     {
-        // este codigo puede ser usado en caso de no querer afectar a otros
-        $category = App\Category::create([
-            'name' => 'Otros'
+        $admin = App\User::create([
+            'name' => 'Admin',
+            'email' => 'admin@email.com',
+            'password' => bcrypt('admin')
         ]);
 
-        Schema::table('products', function (Blueprint $table) use($category){
-            $table->unsignedBigInteger('category_id')->default($category->id);
+        Schema::table('products', function (Blueprint $table) use($admin) {
+            $table->unsignedBigInteger('created_by')->default($admin->id);
 
-            $table->foreign('category_id')->reference('id')->on('category');
+            $table->foreign('created_by')->reference('id')->on('users');
         });
     }
 
