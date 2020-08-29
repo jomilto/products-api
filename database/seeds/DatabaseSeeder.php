@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin')
         ]);
 
+        // App\Category::create([
+        //     'name' => 'Otros'
+        // ]);
+
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }
