@@ -23,3 +23,5 @@ Route::resource('products','ProductController');
 Route::resource('categories','CategoryController');
 
 Route::post('sanctum/token','UserTokenController');
+
+Route::post('/newsletter','NewsletterController@send');
